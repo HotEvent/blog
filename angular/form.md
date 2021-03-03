@@ -8,7 +8,7 @@ name = new FormControl('');
 <input [formControl]="name">
 ```
 让我们想想，当FooComponent组件创建的时候，发生了什么？  
-首先注入器创建了FooComponent实例，随着FooComponent的创建，名为name的FormControl实例也创建了，然后，angular读取模板中的input element的[formControl]属性，创建了一个formControl指令，并把FooComponent中名为name的属性传给了formControl指令。  
+首先angular创建了FooComponent实例，随着FooComponent的创建，名为name的FormControl实例也创建了，然后，angular读取模板中的input element的[formControl]属性，创建了一个formControl指令，并把FooComponent中名为name的属性传给了formControl指令。  
 **我们创建了一个formControl指令**。  
 那创建formControl指令的时候发生了什么？让我们进一步看看。
 
@@ -21,7 +21,7 @@ name = new FormControl('');
 setUpControl(this.form, this);
 this.form.updateValueAndValidity({emitEvent: false});
 ```
-### setUpControl(this.form, this);
+### setUpControl(this.form, this);  
 我们通过valueAccessor写入了formControl实例的初始值。
 在setUpViewChangePipeline函数里我们给valueAccessor设置了registerOnChange方法。  
 在setUpBlurPipeline函数里我们给valueAccessor设置了registerOnTouched方法。
